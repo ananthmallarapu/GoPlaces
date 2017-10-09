@@ -1,0 +1,36 @@
+
+  <app-search></app-search>
+  <p>
+    routed to display results component
+  </p>
+ <body>
+  <div class="container" >
+    <div *ngIf="displayResultsArray">  
+      <div class="row">
+      
+      
+        <div *ngFor="let result of displayResultsArray['results']"  class="card col-sm-4" >
+          <!--<img class="card-img-top image img-fluid " 
+            *ngIf="result.photos['0'].photo_reference" 
+            src="{{Url}}{{result.photos['0'].photo_reference}}{{apiKey}}"
+
+              alt="Card image cap">-->
+              <div class="card-block"[routerLink]="['moredetails',result.place_id]">
+                <h4 class="card-title">
+                  {{result.name }}
+                  <img  class="iconImage"src='{{result.icon}}'></h4>
+                <p class="card-text">{{result.formatted_address |titlecase | slice:0:100 }}
+                    <span *ngIf="result.formatted_address.length>100">...</span> </p>
+                <p class="card-text"></p>
+      
+               </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  
+</body> 
+
+  
+

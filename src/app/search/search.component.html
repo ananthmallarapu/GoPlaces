@@ -1,0 +1,22 @@
+<section class="filter-wrapper">
+    <div class="keyword-wrapper">
+   <input #searchBox type="text"[formControl]="queryField" id="keyword" placeholder="Search for places."
+     />
+     <input type="submit" value="search"  
+     (click)="onSubmitSearch(searchBox.value)"/>
+     </div>
+     <div>
+     <ul class="filter-select">
+        <li  *ngFor="let result of resultssug['predictions']" class="filter-select-list"
+        (click)="onSubmitSearch(result.description)">
+        <p class="artist-name"> {{result.description}}</p>
+        <span class="tags"></span>
+      
+      </ul>
+    </div>
+    
+
+   </section>
+   <!--<app-display-results [displayResultsArray]="results" ></app-display-results>-->
+   
+   
