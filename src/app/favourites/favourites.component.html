@@ -3,8 +3,9 @@
 </p>
 <div *ngIf="favArray.length==0">
   <p>No favourites</p>
-
 </div>
+
+<ng-container *ngIf="!rerender">
 <ul class="list-group">
   <li *ngFor="let result of favArray" class="list-group-item">
     <div class="col-12"> {{result.placeName}}
@@ -47,3 +48,4 @@
   
   
 </ul>
+</ng-container>

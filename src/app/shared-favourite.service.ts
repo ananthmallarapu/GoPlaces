@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SharedFavouriteService {
-  favUrl:string="http://localhost:3000/favourites";
+  favUrl:string="/favourites";
   favSet=[];
   
 

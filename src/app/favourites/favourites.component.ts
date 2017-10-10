@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { SharedFavouriteService } from './../shared-favourite.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -11,8 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class FavouritesComponent implements OnInit {
 favArray=[];
 putitem;
-  constructor(private fav :SharedFavouriteService
+rerender=false;
+  constructor(private fav :SharedFavouriteService,
+    private cdRef:ChangeDetectorRef
   ) { }
+
+  doRerender() {
+    this.rerender = true;
+    this.cdRef.detectChanges();
+    this.rerender = false;
+  }
   getResult(result){
     this.putitem=result;
     console.log(this.putitem);
@@ -27,14 +35,20 @@ putitem;
       userComments:userCommentspar
     };
   
-    this.fav.putFav(this.putitem,userCommentsobj).subscribe(() =>{
+    this.fav.putFav(this.putitem,userCommentsobj).subscribe((res) =>{
+      console.log(res.json());
       console.log(userCommentsobj);
-      
+    
+        
+        
+      this.fav.getFav().subscribe((res) =>{this.favArray=res.json()
+        console.log(this.favArray)});
       
     });
   
-
     
+    
+      
    
     
   }
