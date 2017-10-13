@@ -11,6 +11,7 @@ import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 export class FavouritesComponent implements OnInit {
 favArray=[];
 putitem;
+resultUpdated;
 rerender=false;
   constructor(private fav :SharedFavouriteService,
     private cdRef:ChangeDetectorRef
@@ -36,13 +37,13 @@ rerender=false;
     };
   
     this.fav.putFav(this.putitem,userCommentsobj).subscribe((res) =>{
-      console.log(res.json());
+      this.resultUpdated=res.json();
+      console.log("put favourite method");
+      console.log("updated result",this.resultUpdated);
       console.log(userCommentsobj);
     
         
         
-      this.fav.getFav().subscribe((res) =>{this.favArray=res.json()
-        console.log(this.favArray)});
       
     });
   
